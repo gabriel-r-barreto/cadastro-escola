@@ -2,7 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { AlunosService } from '../alunos.service';
 import { AlunoModel } from './aluno.model';
 import Swal from 'sweetalert2';
-import * as jsPDF from 'jspdf';
+import * as jspdf from 'jspdf';
+import 'jspdf-autotable';
+import {UserOptions} from 'jspdf-autotable';
+
+
+
+// tslint:disable-next-line: class-name
+interface jsPDFWITHPlugin extends jspdf {
+autoTable: (options: UserOptions) => jspdf;
+}
+
 
 @Component({
   selector: 'app-alunos',
@@ -72,7 +82,6 @@ this.alunosService.cadastrarAluno(this.aluno).subscribe(aluno => {
 listarAlunos() {
 this.alunosService.listarAlunos().subscribe(alunos => {
 this.alunos = alunos;
-console.log(this.alunos);
 }, err => {
   console.log('Erro ao listar os alunos', err);
 });
@@ -86,8 +95,16 @@ alunoSelecionado(aluno) {
 }
 
 downloadPdf(dado) {
-const doc = new jsPDF();
-// tslint:disable-next-line: no-unused-expression
+const doc = new jspdf('portrait', 'px', 'a4') as jsPDFWITHPlugin;
+
+doc.autoTable({
+  head: [['ID', 'Nome', 'Idade']],
+  body: [[dado.id, dado.nome, dado.idade]]
+});
+
+doc.save('Pdf');
+
+
 }
 
 }
