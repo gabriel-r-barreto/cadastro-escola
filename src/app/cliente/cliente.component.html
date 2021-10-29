@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+
+<div class="main">
+
+<h2>Cadastrar Aluno: </h2>
+<hr>
+<form class="form-group" style="margin-left: 15px;" [formGroup]="contactForm">
+        <p>Nome: <input type="text" name="name" formControlName="nome" [(ngModel)]="aluno.nome"></p>
+        <p>email: <input type="text" name="idade" formControlName="email" [(ngModel)]="aluno.email"></p>
+        <p>telefone: <input type="text" name="name" formControlName="telefone" [(ngModel)]="aluno.telefone"></p>
+        <p>DT nasc: <input type="text" name="idade" formControlName="dtNascimento" [(ngModel)]="aluno.dataNascimento"></p>
+        <button class="btn btn-primary" type="button" (click)="cadastrar()" style="margin-right: 5rem;">Cadastrar</button>
+        <button class="btn btn-primary" type="button" (click)="clearFormGroup()">Limpar Campos</button>
+
+
+</form>
+
+<h2>Alunos Cadastrados</h2>
+
+<hr>
+<table class="table">
+
+        <thead>
+                <tr>
+                        <th>Selecionar</th>
+                        <th>Nome</th>
+                        <th>email</th>
+                        <th>telefone</th>
+                        <th>Data de nascimento</th>
+                        <th>Ações</th>
+
+
+
+                </tr>
+
+        </thead>
+
+        <tbody>
+
+                <tr *ngFor="let aluno of alunos">
+                        <th><input type="checkbox" (click)="alunoSelecionado(aluno)" value="Selecionar"
+                                        class="btn btn-secondary"></th>
+                        <th>{{aluno.nome}}</th>
+                        <th>{{aluno.email}}</th>
+                        <th>{{aluno.telefone}}</th>
+                        <th>{{aluno.dtNascimento}}</th>
+                        <th class="actions-button"><button (click)="atualizar(aluno.id)" class="btn btn-warning">Editar</button>
+                                <button (click)="remover(aluno.id)" class="btn btn-danger">Remover</button>
+                                <button (click)="downloadPdf(aluno)" class="btn btn-info">Imprimir</button>
+                        </th>
+
+
+                </tr>
+
+        </tbody>
+</table>
+</div>

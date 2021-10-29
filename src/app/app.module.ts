@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlunosComponent } from './alunos/alunos.component';
+import { AlunosComponent } from './cliente/cliente.component';
 
-import {AlunosService} from './alunos.service';
+import {AlunosService} from './cliente.service';
 import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -18,7 +18,8 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [AlunosService, HttpClientModule],
   bootstrap: [AppComponent]

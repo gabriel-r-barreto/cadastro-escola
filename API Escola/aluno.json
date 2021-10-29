@@ -2,18 +2,10 @@
   "Alunos": [
     {
       "nome": "Pablo",
-      "idade": "30",
-      "id": 11
-    },
-    {
-      "nome": "Paola",
-      "idade": "20",
-      "id": 12
-    },
-    {
-      "nome": "Joanderson ",
-      "idade": "25",
-      "id": 13
+      "email": "email@dominioTeste.com.br",
+      "id": 11,
+      "telefone": "(011) 99999-9999",
+      "dtNascimento": "10/05/1980"
     }
   ]
 }
